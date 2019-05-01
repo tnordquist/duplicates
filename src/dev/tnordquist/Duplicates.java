@@ -11,30 +11,24 @@ import java.util.Set;
  */
 public class Duplicates {
 
-  static List<Integer> duplicates (int[] nums) {
-
-    List<Integer> theDups;
+  static Set<Integer> duplicates (int[] nums) {
     Set<Integer> dups = new HashSet<>();
-
+    Set<Integer> arrDups = new HashSet<>();
     for(int i = 0; i < nums.length; ++i) {
 
-      for(int j = i+1; j < nums.length; ++j) {
-
-        if(nums[j] == nums[i]){
-          dups.add(nums[j]);
-        }
+       if(!dups.add(nums[i])){
+         arrDups.add(nums[i]);
+       }
 
       }
-    }
 
-    theDups = new ArrayList(dups);
-    Collections.sort(theDups);
-    return theDups;
+
+    return arrDups;
   }
 
   public static void main(String[] args) {
 
-    int[] arr = {2,1,2,1};
+    int[] arr = {2,2,1,2,1, 8, 3, 3};
     System.out.println(duplicates(arr));
 
   }

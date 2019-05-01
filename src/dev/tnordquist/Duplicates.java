@@ -1,6 +1,7 @@
 package dev.tnordquist;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -13,17 +14,20 @@ public class Duplicates {
 
   static Set<Integer> duplicates (int[] nums) {
     Set<Integer> dups = new HashSet<>();
-    Set<Integer> arrDups = new HashSet<>();
-    for(int i = 0; i < nums.length; ++i) {
+    Arrays.sort(nums);
+    for(int i = 0; i < nums.length-1; ++i) {
 
-       if(!dups.add(nums[i])){
-         arrDups.add(nums[i]);
+      if(nums[i+1]>nums[i]){
+        continue;
+      }
+       else if(nums[i]==nums[i+1]){
+         dups.add(nums[i]);
        }
 
       }
 
 
-    return arrDups;
+    return dups;
   }
 
   public static void main(String[] args) {
